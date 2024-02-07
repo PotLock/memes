@@ -221,28 +221,6 @@ const Core = (props) => {
                 my everything
               </NavLink>
             </li>
-            {account.pretendAccountId ? (
-              <li>
-                <button
-                  className="dropdown-item"
-                  disabled={!account.startPretending}
-                  onClick={() => account.startPretending(undefined)}
-                >
-                  <StopPretending />
-                  Stop pretending
-                </button>
-              </li>
-            ) : (
-              <li>
-                <button
-                  className="dropdown-item"
-                  onClick={() => setShowPretendModal(true)}
-                >
-                  <Pretend />
-                  Pretend to be another account
-                </button>
-              </li>
-            )}
             <li>
               <button className="dropdown-item" onClick={() => props.logOut()}>
                 <LogOut />

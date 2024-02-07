@@ -40,7 +40,7 @@ function Router({ active, routes }) {
       }
     } else {
       // Handle 404 or default case for unknown routes
-      return <p>404 Not Found</p>;
+      return <p>Memes loading</p>;
     }
   }
 
