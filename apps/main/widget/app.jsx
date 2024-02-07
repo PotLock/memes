@@ -1,29 +1,35 @@
-/**
- * Every app is structured the same
- */
-const { page, layout, loading, ...passProps } = props;
+const { page, tab, ...passProps } = props;
 
-const { routes } = props.data;
-
-const { AppLayout } = VM.require("every.near/widget/layout") || {
-  AppLayout: () => <>Layout loading...</>,
+const { routes } = {
+  type: "app",
+  routes: {
+    home: {
+      path: "memesforgood.near/widget/Index",
+      blockHeight: "final",
+      init: {
+        name: "Home",
+      },
+    },
+    feed: {
+      path: "memesforgood.near/widget/Feed",
+      blockHeight: "final",
+      init: {
+        name: "Feed",
+      },
+    },
+  },
 };
 
-if (!page) page = "home";
+const { AppLayout } = VM.require("memesforgood.near/widget/layout") || {
+  AppLayout: () => <></>,
+};
 
-const Theme = styled.div`
-  a {
-    color: inherit;
-  }
-`;
+if (!page) page = Object.keys(routes)[0] || "home";
 
-const [activeRoute, setActiveRoute] = useState(page);
-
-useEffect(() => {
-  setActiveRoute(page);
-}, [page]);
+const Root = styled.div``;
 
 function Router({ active, routes }) {
+  // this may be converted to a module at devs.near/widget/Router
   const routeParts = active.split(".");
 
   let currentRoute = routes;
@@ -40,15 +46,20 @@ function Router({ active, routes }) {
       }
     } else {
       // Handle 404 or default case for unknown routes
-      return <p>Memes loading</p>;
+      return <p>404 Not Found</p>;
     }
   }
 
   return (
     <div key={active}>
       <Widget
-        src="every.near/widget/thing"
-        props={{ ...passProps, ...defaultProps, path: src }}
+        src={src}
+        props={{
+          currentPath: `/memesforgood.near/widget/app?page=${page}`,
+          page: tab,
+          ...passProps,
+          ...defaultProps,
+        }}
       />
     </div>
   );
@@ -56,23 +67,22 @@ function Router({ active, routes }) {
 
 const Container = styled.div`
   display: flex;
-  height: 100vh;
+  height: 100%;
 `;
 
 const Content = styled.div`
   width: 100%;
   height: 100%;
-  overflow: scroll;
 `;
 
 return (
-  <Theme>
+  <Root>
     <Container>
-      <AppLayout page={activeRoute} routes={routes}>
+      <AppLayout page={page} routes={routes} {...props}>
         <Content>
-          <Router active={activeRoute} routes={routes} />
+          <Router active={page} routes={routes} />
         </Content>
       </AppLayout>
     </Container>
-  </Theme>
+  </Root>
 );

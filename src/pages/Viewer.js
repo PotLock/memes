@@ -18,7 +18,7 @@ function Viewer({ code }) {
   }, [location]);
 
   const src = useMemo(() => {
-    const defaultSrc = "every.near/widget/core"; // default widget to load
+    const defaultSrc = "memesforgood.near/widget/app"; // default widget to load
     const pathSrc = path || defaultSrc; // if no path, load default widget
     return pathSrc;
     // const lastSlashIndex = pathSrc.lastIndexOf("/", pathSrc.indexOf(".near")); 
@@ -60,7 +60,7 @@ function Viewer({ code }) {
 
   return (
     <Widget
-      src={!code && path ? "every.near/widget/thing" : src}
+      src={!code && src}
       code={code} // prioritize code
       props={{
         path: src,
