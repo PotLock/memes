@@ -201,7 +201,7 @@ const Core = (props) => {
                 className="dropdown-item"
                 style={{ maxWidth: "300px" }}
                 type="button"
-                href={`https://${account.accountId}.social`}
+                href={`mob.near/widget/MyPage?accountId=${account.accountId}`}
               >
                 <Widget
                   src={"mob.near/widget/Profile.InlineBlock"}
@@ -211,16 +211,16 @@ const Core = (props) => {
                 />
               </a>
             </li>
-            <li>
-              <NavLink
-                className="dropdown-item"
-                type="button"
-                to={`/${account.accountId}`}
-              >
-                <User />
-                my everything
-              </NavLink>
-            </li>
+            {false && <li>
+<NavLink
+  className="dropdown-item"
+  type="button"
+  to={`/${account.accountId}`}
+>
+  <User />
+  my everything
+</NavLink>
+</li>}
             <li>
               <button className="dropdown-item" onClick={() => props.logOut()}>
                 <LogOut />
