@@ -18,7 +18,7 @@ function Viewer({ code }) {
   }, [location]);
 
   const src = useMemo(() => {
-    const defaultSrc = "memesforgood.near/widget/app"; // default widget to load
+    const defaultSrc = "bos.memesforgood.near/widget/app"; // default widget to load
     const pathSrc = path || defaultSrc; // if no path, load default widget
     return pathSrc;
     // const lastSlashIndex = pathSrc.lastIndexOf("/", pathSrc.indexOf(".near")); 

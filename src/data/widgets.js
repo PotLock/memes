@@ -19,7 +19,7 @@ const TestnetWidgets = {
 
 const MainnetWidgets = {
   image: "mob.near/widget/Image",
-  default: "memesforgood.near/widget/Index",
+  default: "bos.memesforgood.near/widget/Index",
   editor: "itexpert120-contra.near/widget/TestEditor",
   thing: "efiz.near/widget/every.thing.view",
   action: "efiz.near/widget/action",

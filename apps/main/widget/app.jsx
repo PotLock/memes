@@ -4,14 +4,14 @@ const { routes } = {
   type: "app",
   routes: {
     home: {
-      path: "memesforgood.near/widget/Index",
+      path: "bos.memesforgood.near/widget/Index",
       blockHeight: "final",
       init: {
         name: "Home",
       },
     },
     feed: {
-      path: "memesforgood.near/widget/Feed",
+      path: "bos.memesforgood.near/widget/Feed",
       blockHeight: "final",
       init: {
         name: "Feed",
@@ -20,7 +20,7 @@ const { routes } = {
   },
 };
 
-const { AppLayout } = VM.require("memesforgood.near/widget/layout") || {
+const { AppLayout } = VM.require("bos.memesforgood.near/widget/layout") || {
   AppLayout: () => <></>,
 };
 
@@ -55,7 +55,7 @@ function Router({ active, routes }) {
       <Widget
         src={src}
         props={{
-          currentPath: `/memesforgood.near/widget/app?page=${page}`,
+          currentPath: `/bos.memesforgood.near/widget/app?page=${page}`,
           page: tab,
           ...passProps,
           ...defaultProps,
